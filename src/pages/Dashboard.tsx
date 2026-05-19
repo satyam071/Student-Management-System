@@ -1,0 +1,15 @@
+import React from "react";
+
+interface Props {
+
+}
+
+const Dashboard: React.FC<Props> = (props) =>{
+  return (
+    <div>
+        This is a dashboard Section
+    </div>
+  );
+};
+
+export default Dashboard;
