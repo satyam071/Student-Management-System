@@ -9,7 +9,7 @@ const Signup: React.FC<Props> = (props) => {
     return (
         <div>
             This is a signup section
-            Alredy have an account <Link to={"/login"}><span className="text-blue-600">Click here</span></Link>
+            Alredy have an account <Link to={"/auth/login"}><span className="text-blue-600">Click here</span></Link>
 
 
         </div>
