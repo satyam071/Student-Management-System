@@ -21,7 +21,7 @@ const App: React.FC<Props> = (props) => {
 
 
         {/* <Route path="/"  element={<LoginPage />} /> */}
-        <Route index element={<Navigate to="*" replace />} />
+        <Route index element={<Navigate to="/auth/login" replace />} />
         <Route path="/auth/*" element={<AuthPage />} />
 
         <Route path="/app/*" element={<AppContainer />} />
