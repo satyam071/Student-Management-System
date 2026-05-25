@@ -1,0 +1,8 @@
+Yup
+two funtions 
+ValidateSync-> returns a promise on transformed DataType while Sync Depicts the Syncronous code
+
+
+Difference Btween Hook(Humare data ko component ke saath hook kr deta hai ) and Function
+
+formik npm install formik

@@ -1,42 +1,75 @@
+import { useFormik } from "formik";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import * as yup from "yup";
 
 interface Props {
 
 }
 
 const Login: React.FC<Props> = (props) => {
-  // const [email, setEmail] = useState("")
-  // const [password, setPassword] = useState("")
-  const [data, setData] = useState({ email: "", password: "" })
-  const [touched, setTouched] = useState({ email: false, password: false });
+
+  // const [data, setData] = useState({ email: "", password: "" })
+  // const [touched, setTouched] = useState({ email: false, password: false });
 
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const nameOfChangedInput = event.target.name
-    setData({ ...data, [nameOfChangedInput]: event.target.value })
-  }
-  const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
-    const nameOfBlurredEmail = event.target.name
-    setTouched({ ...touched, [nameOfBlurredEmail]: true })
-  }
+  // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   const nameOfChangedInput = event.target.name
+  //   setData({ ...data, [nameOfChangedInput]: event.target.value })
+  // }
+  // const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+  //   const nameOfBlurredEmail = event.target.name
+  //   setTouched({ ...touched, [nameOfBlurredEmail]: true })
+  // }
 
+  // const formValidator = yup.object().shape({
+  //   email: yup.string().required().email(),
+  //   password: yup.string().required().min(8),
+  // });
 
+ 
+  // const myData = {
+  //   age: 10,
+  //   firstName: "Su",
+  //   lastName: "Yadav"
+  // };
 
-  let emailError = "";
-  let passwordError = "";
+  // const nameValidator = yup.object().shape({
+  //   firstName: yup.string().required().min(2),
+  //   lastName: yup.string().required().min(2),
+  //   age:yup.number().required().positive()
+  // })
 
-  if (!data.email) {
-    emailError = "Email address required*";
-  } else if (!data.email.endsWith("@gmail.com")) {
-    emailError = "Please enter a valid Email";
-  }
+  // console.log("My data Validator",nameValidator.isValidSync(myData))
+  
 
-  if (!data.password) {
-    passwordError = "Password required*";
-  } else if (data.password.length < 6) {
-    emailError = "Please enter a valid password";
-  }
+  // let emailError = "";
+  // let passwordError = "";
+
+  // if (!data.email) {
+  //   emailError = "Email address required*";
+  // } else if (!data.email.endsWith("@gmail.com")) {
+  //   emailError = "Please enter a valid Email";
+  // }
+
+  // if (!data.password) {
+  //   passwordError = "Password required*";
+  // } else if (data.password.length < 6) {
+  //   emailError = "Please enter a valid password";
+  // }
+  const myForm=useFormik({
+    initialValues:{
+      email:"",
+      password:"",
+    },
+    validationSchema:yup.object().shape({
+      email:yup.string().required("Email chahiye bhai!").email(),
+      password:yup.string().required().min(8,({min})=>`Atleast ${min} chars!!!`),
+    }),
+    onSubmit:(data)=>{
+      console.log("Form Submitting",data);
+    }
+  })
 
 
 
@@ -53,15 +86,7 @@ const Login: React.FC<Props> = (props) => {
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <form method="POST" className="space-y-6"
-          onSubmit={(event) => {
-            event.preventDefault();
-            if(emailError || passwordError){
-              console.log("form not submitted")
-              return ;
-            }
-            console.log(data)
-
-          }}
+          onSubmit={myForm.handleSubmit}
         >
           <div>
             <label htmlFor="email" className="block text-sm/6 font-medium text-gray-100">
@@ -72,16 +97,16 @@ const Login: React.FC<Props> = (props) => {
                 id="email"
                 name="email"
                 type="email"
-                onBlur={handleBlur}
-                value={data.email} //prefilled data
-                onChange={(event) => handleChange(event)}
+                onBlur={myForm.handleBlur}
+                value={myForm.values.email} //prefilled data
+                onChange={myForm.handleChange}
                 required
                 autoComplete="email"
                 className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
               />
             </div>
           </div>
-          {touched.email && <div className="text-sm text-red-600">{emailError}</div>}
+          {myForm.touched.email && <div className="text-sm text-red-600">{myForm.errors.email}</div>}
 
           <div>
             <div className="flex items-center justify-between">
@@ -99,16 +124,16 @@ const Login: React.FC<Props> = (props) => {
                 id="password"
                 name="password"
                 type="password"
-                onBlur={handleBlur}
-                value={data.password} //prefilled data
-                onChange={(event) => handleChange(event)}
+                onBlur={myForm.handleBlur} 
+                value={myForm.values.password} //prefilled data
+                onChange={myForm.handleChange}
                 required
                 autoComplete="current-password"
                 className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
               />
             </div>
           </div>
-          {touched.password && <div className="text-sm text-red-600">{passwordError}</div>}
+          {myForm.touched.password && <div className="text-sm text-red-600">{myForm.errors.password}</div>}
 
           <div>
             <button
