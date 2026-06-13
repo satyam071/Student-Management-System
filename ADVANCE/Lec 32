@@ -1,0 +1,24 @@
+HTTP - is stateless operation (has no context that who is the person)--  every time reenter the page HTTP thinks he's new
+---->to duck this we use COOKIES
+
+COOKIES have TOKEN (Username + Password) {temperory Password}
+
+
+Cookies or Token (has pre defined data ki in book my show  your city , so he'll display same city in every page)
+
+scenario-
+Agar koi kotak bank mai loggedin hai , and wo koi dusari website bhi khola now the post request will run in 2nd website ki debit xyz amount from this account due to cookies then usska account khaali ho jaaega 
+
+SHOWN IN IMAGE--(HACK)
+
+To prevent this browser uses 
+
+
+
+CORS(Cross origin resource sharing)
+before get, post request an Options request will trigger and goes to the API
+(in headers)access-control-allow-origin https://*-------means evrypage is allowed 
+
+
+
+Axios has Interceptors (checking before sending requests) Use 

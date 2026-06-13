@@ -1,0 +1,111 @@
+Netlify-
+
+Rewrite-other page opened on that same url & Redirect-different URL opened
+
+
+
+REST API-
+Representational State Trasfer API
+
+
+
+API --------------
+CLI- COmmand line interface
+GUI-Graphics User interface
+voice wala
+Multiple interface 
+
+API-Application Programming Interface
+(When yout want your software to be used by other softwares)
+Software talking to software
+
+
+1)Promotional mail jaaye roz--Mail bhejne ka software (tool API used)
+Jab bhi meri website pe koi login kre to mai dusari website ka tool jissy API bolte hai hum wo use kr kr ke user ko promotional mail bhej ke pareshan kr ske.
+some API is Mailchimp
+
+API(combination of many functions)
+
+
+Now 
+Client ke server se API kaise call hogi kyuki dono ka system alag hai
+
+
+to an HTTP protocol sends to the API stating that which method to call and along with that what are the datas should be added
+
+eg-Suppose promtional email bhejna hai kisi client ko to hum url mai "Email bhejna hai" ka methods/function add krenge aur saath hi username and email bhi send krenge
+
+
+Request Contains:
+the methods are 
+GET
+POST 
+PUT 
+PATCH
+DELETE 
+OPTIONS
+
+URL-DOMAIN + PATH + QueryParams
+(www.google.com?abc) abc is a query
+(www.google.com$abc) abc is 
+
+Request Body 
+
+Request Header
+
+
+REST calls a function by just looking into the METHOD + PATH 
+
+eg-https://api.mailchimp.com/contacts-GET
+
+// /contact + GET -getAllContacts()
+// /lists + GET -getAllLists()
+// /contact + POST -createNewContact()
+// /list + POST -createNewList()
+
+
+
+APIs must be intutive-like GUI ki logout button to kone mai hi hoga and all so API also must be intutive ki anything to do with contact will be on contact 
+1) FETCH-
+/contact-GET ----fetchs requests list of contacts
+/photos-GET ----fetchs requests list of photos
+
+2) ADD-
+/contacts-POST ---POSTs/ insert sends data
+
+Method- GET, POST , PUT , PATCH ,DELETE , OPTIONS
+URL-DOMAIN+PATH+QueryParams+Fragments
+request body 
+Request Headers
+
+
+Data is travelled in simple string
+
+const a =requestBody.split (",")  converting strings into objects - deserialization or parsing
+a.join(",") //serialization
+
+CSV-has ambiguity
+json and xml- is typically used
+
+XML-
+<users>
+<firstName>
+<lastName>
+<address>
+</firstName>
+</lastName>
+</users>
+
+JSON(JavaScript Syntax Notations)
+{
+    "users":[
+        {
+            "firstName":"Satyam",
+            "address":"Renukoot","India"
+        },
+        {}
+    ]
+}
+null,undefined,boolean, number, string, array, object--are used in this json 
+
+

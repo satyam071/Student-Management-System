@@ -4,7 +4,7 @@ interface Props {
 
 }
 
-const Recordings: React.FC<Props> = (props) =>{
+const Recordings: React.FC<Props> = () =>{
   return (
     <div>
         This is a Recordings Section

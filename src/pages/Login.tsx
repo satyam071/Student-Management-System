@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import * as yup from "yup";
 import Input from "../Components/Input/Input";
 import Button from "../Components/Button/Button";
+import { login } from "../api";
 
 interface Props {
 
@@ -69,7 +70,7 @@ const Login: React.FC<Props> = (props) => {
       password: yup.string().required().min(8, ({ min }) => `Atleast ${min} chars!!!`),
     }),
     onSubmit: (data) => {
-      console.log("Form Submitting", data);
+      login(data);
     }
   })
 
