@@ -8,6 +8,10 @@ import axios from "axios";
 
 // })//nahi smjh aaya 
 
+const data = {
+  email: "eve.holt@reqres.in",
+  password: "cityslicka",
+};
 
 
 // key = free_user_3FIsoTTGP5vQ5e68oaWU9ywr0K1;
@@ -33,17 +37,7 @@ export const login = (data: LoginData) => {
       localStorage.setItem("login_token", response.data.token);
     });
 
-  // return fetch(URL, {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //     "x-api-key": "free_user_3FIsoTTGP5vQ5e68oaWU9ywr0K1",
-  //   },
-  //   body:JSON.stringify(data)
-  // }).then((response) => {
-  //   response.json().then((data)=>console.log("Response body",data));
-  //   return response;
-  // });
+  
 };
 
 interface GroupRequest {
