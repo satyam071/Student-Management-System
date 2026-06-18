@@ -3,6 +3,8 @@ import { Route, Routes,Navigate } from "react-router-dom";
 import AuthHero from "../Components/AuthHero";
 import LoginPage from "./Login"
 import SignupPage from "./Signup"
+// import NotFound from "./NotFound.page";
+import Dashboard from "./Dashboard";
 import NotFound from "./NotFound.page";
 
 interface Props {
@@ -27,7 +29,8 @@ const AuthPage: React.FC<Props> = (props) => {
                         <AuthHero/>
                     </div>
                 } />
-                <Route path="*" element={<NotFound/>}></Route>
+                {/* <Route path="/dashboard" element={<Dashboard/>}></Route> */}
+                <Route path="/*" element={<NotFound/>}></Route>
             </Routes>
             
         </div>

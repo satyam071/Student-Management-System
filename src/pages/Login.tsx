@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import Input from "../Components/Input/Input";
 import Button from "../Components/Button/Button";
@@ -12,6 +12,7 @@ interface Props {
 
 const Login: React.FC<Props> = (props) => {
   const [theme, setTheme] = useState<"primary" | "secondary">("primary");
+  const navigate=useNavigate()
   // const [data, setData] = useState({ email: "", password: "" })
   // const [touched, setTouched] = useState({ email: false, password: false });
 
@@ -70,7 +71,9 @@ const Login: React.FC<Props> = (props) => {
       password: yup.string().required().min(8, ({ min }) => `Atleast ${min} chars!!!`),
     }),
     onSubmit: (data) => {
-      login(data);
+      login(data).then(()=>{
+        navigate("/app/dashboard");
+      });
     }
   })
 
